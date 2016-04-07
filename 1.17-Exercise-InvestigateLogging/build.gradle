@@ -19,21 +19,24 @@ Exercises:
 6. Uncomment and run the "derpy" task below, then use "--stacktrace" to find
    the error.
 7. CHALLENGE! Log "Catch me if you can" at DEBUG level, then use grep (or
-    findstr on Windows) to find that message in the logs.
+	findstr on Windows) to find that message in the logs.
 
 */
 
 task hello(type: HelloTask)
 
 class HelloTask extends DefaultTask {
-    @TaskAction
-    void doAction() {
-        println 'Hello World'
-    }
+	@TaskAction
+	void doAction() {
+		logger.info('Beginning of doAction.')
+		logger.lifecycle('Hello World')
+		println 'Hello World'
+		logger.info('End of doAction.')
+		logger.debug('Catch me if you can')
+	}
 }
 
-/*
+
 task derpy << {
-    primp "Herp de derp"
+	primp "Herp de derp"
 }
-*/
